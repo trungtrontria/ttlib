@@ -12,7 +12,6 @@ import org.robolectric.annotation.Config;
 public class ExampleUnitTest {
     @Test
     public void test123() {
-        System.out.println("TrungNQ");
-        Assertions.assertThat(1 + 1).isEqualTo(3);
+        Assertions.assertThat(1 + 1).isEqualTo(2);
     }
 }
