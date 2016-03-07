@@ -1,4 +1,9 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.trontria.lib' // Change this to match your package name
+version = '1.0.0' // Change this to match your version number
 
 android {
     compileSdkVersion 21
@@ -29,4 +34,34 @@ dependencies {
     testCompile 'com.squareup.assertj:assertj-android:1.1.0'
     testCompile "org.robolectric:robolectric:3.0"
     testCompile 'org.robolectric:shadows-httpclient:3.0'
+}
+
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+artifacts {
+//    archives generateJavadocsJar
+    archives generateSourcesJar
+}
+
+bintray {
+    user = 'nquangtrung'
+    key = '8795596095b4be6e2a84aa40f9cc242ff60b8305'
+    pkg {
+        repo = 'maven'
+        name = 'TronTriaLib' // the name of the package in BinTray
+
+        version {
+            name = 'ttlib' // the name of your library project
+            desc = 'This is the first version'
+            released  = new Date()
+            vcsTag = '1.0.0' // the version
+        }
+
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/trungtrontria/ttlib' // your GitHub repo
+    }
+    configurations = ['archives']
 }
