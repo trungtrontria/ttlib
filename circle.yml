@@ -2,4 +2,4 @@ deployment:
     production:
         branch: master
         commands:
-            - gradlew bintrayUpload
+            - ./gradlew bintrayUpload

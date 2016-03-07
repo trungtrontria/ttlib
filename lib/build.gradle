@@ -57,7 +57,7 @@ bintray {
             name = 'ttlib' // the name of your library project
             desc = 'This is the first version'
             released  = new Date()
-            vcsTag = '1.0.0' // the version
+            vcsTag = '1.0.1' // the version
         }
 
         licenses = ['Apache-2.0']
