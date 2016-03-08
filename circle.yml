@@ -1,5 +1,14 @@
+dependencies:
+  pre:
+    - echo y | android update sdk --no-ui --all --filter "tool"
+    - echo y | android update sdk --no-ui --all --filter "extra-android-m2repository"
+    - echo y | android update sdk --no-ui --all --filter "extra-android-support"
+    - echo y | android update sdk --no-ui --all --filter "extra-google-google_play_services"
+    - echo y | android update sdk --no-ui --all --filter "extra-google-m2repository"
+    - echo y | android update sdk --no-ui --all --filter "android-23"
+    - echo y | android update sdk --no-ui --all --filter build-tools-23.0.2
 deployment:
-    production:
-        branch: master
-        commands:
-            - ./gradlew bintrayUpload
+  production:
+    tag: /release[0-9]+(\.[0-9]+){0,2}/
+      commands:
+        - ./gradlew bintrayUpload
